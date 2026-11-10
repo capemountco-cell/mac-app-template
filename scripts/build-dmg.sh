@@ -19,6 +19,8 @@ source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
   "The core crate and the frontend still build and test here: npm run check."
 xcode-select -p >/dev/null 2>&1 || fail "the Xcode command line tools are missing." "Run: xcode-select --install"
 
+# macOS ships bash 3.2, where expanding an empty array under `set -u` is an
+# "unbound variable" error. Every expansion below uses the ${a[@]+...} form.
 TARGET_ARGS=()
 ARCH="$(uname -m)"
 for arg in "$@"; do
@@ -77,7 +79,7 @@ npm run test
 cargo test --workspace
 
 say "Building $PRODUCT_NAME $VERSION ($ARCH)"
-npm run tauri -- build --bundles app dmg "${TARGET_ARGS[@]}"
+npm run tauri -- build --bundles app dmg ${TARGET_ARGS[@]+"${TARGET_ARGS[@]}"}
 
 # Searched for, not assumed: in a Cargo workspace the bundle lands in the
 # workspace target directory, and a --target build adds a directory level.
