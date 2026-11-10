@@ -6,6 +6,12 @@ handled by the scripts rather than by you.
 
 ## Start a new app
 
+Create an empty GitHub repository for the app, open a Claude chat with it
+selected, and paste the prompt in [docs/new-app.md](docs/new-app.md). The
+chat copies this template in, names it, and checks that the `.dmg` builds.
+
+### Or do it yourself
+
 1. On GitHub, click **Use this template** > **Create a new repository**.
 2. Clone it, then name it:
 
