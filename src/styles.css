@@ -1,0 +1,90 @@
+:root {
+  color-scheme: light dark;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  --text: #1d1d20;
+  --muted: #6e6e7a;
+  --surface: #fbfbfd;
+  --accent: #2f6fd0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #f2f2f5;
+    --muted: #a2a2ad;
+    --surface: #1c1c1f;
+    --accent: #62a0f0;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--text);
+  /* A desktop window is not a document. Text meant to be copied opts back in. */
+  user-select: none;
+  cursor: default;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 64px 24px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+p {
+  margin: 0;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.error {
+  color: #c2543f;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+input,
+button {
+  font: inherit;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid color-mix(in srgb, var(--text) 18%, transparent);
+  background: transparent;
+  color: inherit;
+}
+
+input {
+  flex: 1;
+  user-select: text;
+}
+
+button {
+  background: var(--accent);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}

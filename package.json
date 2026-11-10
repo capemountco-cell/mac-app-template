@@ -1,0 +1,37 @@
+{
+  "name": "starter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A native macOS app built with Tauri 2, Rust and React.",
+  "scripts": {
+    "init": "node scripts/init-project.mjs",
+    "doctor": "bash scripts/doctor.sh",
+    "dev": "tauri dev",
+    "dev:web": "vite",
+    "build:web": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "check": "npm run typecheck && npm run test && cargo fmt --all --check && cargo clippy -p starter-core --all-targets -- -D warnings && cargo test -p starter-core",
+    "dmg": "bash scripts/build-dmg.sh",
+    "dmg:universal": "bash scripts/build-dmg.sh --universal",
+    "verify-dmg": "bash scripts/verify-dmg.sh",
+    "icons": "tauri icon src-tauri/app-icon.png && rm -rf src-tauri/icons/android src-tauri/icons/ios",
+    "set-version": "node scripts/set-version.mjs",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.9.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.9.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "typescript": "^5.8.3",
+    "vite": "^7.1.0",
+    "vitest": "^3.2.0"
+  }
+}
