@@ -17,6 +17,14 @@ Every Mac app gets its own download website, made the same way each time:
   Create it in the Lovable workspace "006", named `<app>-site` (for
   example `captainapp-site`). The user connects it to GitHub from the
   Lovable editor.
+- **When Lovable can't do the work** (the workspace is out of credits, or
+  any other refusal): don't wait for credits. Edit the site through its
+  GitHub repo instead: clone it, make the change, check it locally (build,
+  tests, a look at the page), open a PR, merge it per the merging rule, then
+  republish with Lovable's deploy (publishing needs no credits) and confirm
+  the live page. If the site isn't connected to GitHub yet, ask the user
+  once to connect it from the Lovable editor (Project settings, GitHub),
+  then carry on as above.
 - **Same shape as the Camu website** (Lovable project
   `2795037d-c483-4c5c-954c-ab2fbbe5d56f`, camu.cc): fixed nav that blurs on
   scroll, hero with Download and "How to install", a features grid, two
