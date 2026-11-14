@@ -22,8 +22,11 @@ Every Mac app gets its own download website, made the same way each time:
   scroll, hero with Download and "How to install", a features grid, two
   showcase rows, numbered install steps, a final call to action, footer.
 - **The app's own brand:** its logo and app icon (favicon, share image), its
-  palette and copy. Real screenshots when the app looks final, otherwise an
-  HTML/CSS recreation of its window.
+  palette and copy.
+- **Real screenshots of the app**, never drawn imitations of its window.
+  Capture them from the app's interface at 2x (2560x1600 for a 1280x800
+  window), e.g. `npm run dev:web` with `?demo` sample data, with the macOS
+  window buttons drawn in. Retake them whenever the app's look changes.
 - **A `/download` route** that streams the first `.dmg` of the app repo's
   latest GitHub release, and falls back to its Releases page. No
   analytics or tracking unless the user asks.
