@@ -17,6 +17,14 @@ Every Mac app gets its own download website, made the same way each time:
   Create it in the Lovable workspace "006", named `<app>-site` (for
   example `captainapp-site`). The user connects it to GitHub from the
   Lovable editor.
+- **When Lovable can't do the work** (the workspace is out of credits, or
+  any other refusal): don't wait for credits. Edit the site through its
+  GitHub repo instead: clone it, make the change, check it locally (build,
+  tests, a look at the page), open a PR, merge it per the merging rule, then
+  republish with Lovable's deploy (publishing needs no credits) and confirm
+  the live page. If the site isn't connected to GitHub yet, ask the user
+  once to connect it from the Lovable editor (Project settings, GitHub),
+  then carry on as above.
 - **Same shape as the Camu website** (Lovable project
   `2795037d-c483-4c5c-954c-ab2fbbe5d56f`, camu.cc): fixed nav that blurs on
   scroll, hero with Download and "How to install", a features grid, two
@@ -28,10 +36,18 @@ Every Mac app gets its own download website, made the same way each time:
   window), e.g. `npm run dev:web` with `?demo` sample data, with the macOS
   window buttons drawn in. Retake them whenever the app's look changes.
 - **A `/download` route** that streams the first `.dmg` of the app repo's
-  latest GitHub release, and falls back to its Releases page. No
-  analytics or tracking unless the user asks.
+  latest GitHub release. No analytics or tracking unless the user asks.
 - **One `SITE_URL` constant** for the domain (canonical, share tags,
   robots.txt, sitemap.xml). Ask the user for the domain; never guess one.
+- **The Camu website's footer** (`SiteFooter` in its
+  `src/components/site/chrome.tsx`): the app's wordmark and a one-line
+  description, a few columns of links to the site's own pages, and a
+  bottom bar reading "© <current year, computed> <App name>".
+- **Never mention or visibly link to GitHub, and never say who made the
+  app**: no "Source", "Releases" or "Made by" anywhere. The GitHub address
+  lives only inside the `/download` server handler. If no `.dmg` is found,
+  it answers "Download unavailable, please try again shortly." instead of
+  sending people to GitHub.
 
 Once the site exists, note its Lovable project id at the end of this
 section in the app's own CLAUDE.md.
