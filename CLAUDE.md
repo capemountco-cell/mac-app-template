@@ -43,6 +43,14 @@ Every Mac app gets its own download website, made the same way each time:
   `src/components/site/chrome.tsx`): the app's wordmark and a one-line
   description, a few columns of links to the site's own pages, and a
   bottom bar reading "© <current year, computed> <App name>".
+- **A `/privacy` page, "Privacy & Security"**, so people can trust the app
+  without knowing who made it: what the app does and doesn't do with data
+  (account, analytics, network connections, where files and passwords go),
+  its security checks, why macOS asks to confirm if it isn't notarized, and
+  the website's own analytics and payments. Every claim must be true to the
+  app's code; check it before publishing and update the page when the app
+  changes. No email address and no GitHub link on it. Link it from a footer
+  column and the install steps, and list it in sitemap.xml.
 - **Never mention or visibly link to GitHub, and never say who made the
   app**: no "Source", "Releases" or "Made by" anywhere. The GitHub address
   lives only inside the `/download` server handler. If no `.dmg` is found,
